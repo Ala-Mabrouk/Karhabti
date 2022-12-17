@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import *
 from tkinter import messagebox
 from experta import *
+import random
  
 root = tk.Tk()  # create root window
 root.iconphoto(False, tk.PhotoImage(file='./icons/car.png'))
@@ -90,7 +91,7 @@ class Welcome(KnowledgeEngine):
 
     @Rule(Fact(action='find_car'), NOT(Fact(car=MATCH.car)), salience=-999)
     def not_bestCar(self):
-        print("need more info\n")
+        print("need more info to make a decision\n")
         global carResult
         carResult="no idea"
 
@@ -123,16 +124,19 @@ def openResultWindow():
     BodyFrame = Frame(windowRes, width=700, height=300, bg=backgroundvalue)
     BodyFrame.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
     if(carResult=="no idea"):
-        Label(headFrame, text="Sorry we could not find a car in our knowledgebase with your preferences", font=(
+        # generating random car from the popular list:
+        carName= random.choice(["Audi a4","Toyota prado","Chery Tiggo 2"])
+        
+        Label(headFrame, text="Désolé, nous n'avons pas trouvé de voiture dans notre base de connaissances avec vos préférences", font=(
             "arial italic", 10), bg=backgroundvalue, fg=titleColor).grid(row=0, column=1, padx=5, pady=5)
-        Label(headFrame, text="but we recommend to you \t", font=(
+        Label(headFrame, text="mais nous vous recommandons \t", font=(
             "arial italic", 10), bg=backgroundvalue, fg=titleColor).grid(row=1, column=1, padx=5, pady=5)            
-        title1 = Label(headFrame, text="Chery Tiggo 2", font=(
+        title1 = Label(headFrame, text=carName, font=(
             "arial italic", 18, "bold"), bg=backgroundvalue, fg=titleColor).grid(row=3, column=1, padx=5, pady=5)
         resImage = PhotoImage(
-            master=BodyFrame, file="./images/Chery Tiggo 2.gif").subsample(2, 2)
+            master=BodyFrame, file="./images/"+carName+".gif").subsample(2, 2)
     else:        
-        Label(headFrame, text="Refering to your choices we recommend to you \t\t", font=(
+        Label(headFrame, text="En se référant à vos choix, nous vous recommandons \t\t", font=(
             "arial italic", 10), bg=backgroundvalue, fg=titleColor).grid(row=0, column=1, padx=5, pady=5)
         title1 = Label(headFrame, text=carResult, font=(
             "arial italic", 18, "bold"), bg=backgroundvalue, fg=titleColor).grid(row=2, column=1, padx=5, pady=5)
@@ -155,7 +159,7 @@ headFrame.grid(row=0, column=0, padx=10, pady=5, sticky="nsew")
 
 title1 = tk.Label(headFrame, text="  Karhabti: ", font=(
     "arial italic", 18, "bold"), bg=backgroundvalue, fg=titleColor).grid(row=0, column=1, padx=5, pady=5)
-subTitle1 = tk.Label(headFrame, text="\tExpert System for getting your suitable car in Tunisia", font=(
+subTitle1 = tk.Label(headFrame, text="\tSystème expert pour obtenir la voiture qui vous convient en Tunisie", font=(
     "arial italic", 15), bg=backgroundvalue, fg=titleColor).grid(row=1, column=1, padx=5, pady=5)
 subTitle2 = tk.Label(headFrame, text="", font=(
     "arial italic", 15), bg=backgroundvalue, fg=backgroundvalue).grid(row=2, column=1, padx=5, pady=5)
@@ -165,16 +169,16 @@ BodyFrame = tk.Frame(root, width=600, height=400, bg=backgroundvalue)
 BodyFrame.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
 
 left_frame = tk.Frame(BodyFrame, width=400, height=400, bg=bgFrames)
-left_frame.grid(row=1, column=0, padx=10, pady=5, sticky="nsew")
+left_frame.grid(row=1, column=0, padx=20, pady=5, sticky="nsew")
 
 right_frame = tk.Frame(BodyFrame, width=400, height=400, bg=bgFrames)
-right_frame.grid(row=1, column=1, padx=10, pady=5, sticky="nsew")
+right_frame.grid(row=1, column=1, padx=20, pady=5, sticky="nsew")
 
 footerFrame = tk.Frame(root, width=600, height=150, bg=backgroundvalue)
 footerFrame.grid(row=2, column=0, padx=10, pady=5, sticky="nsew")
 
 # title left frame
-tk.Label(BodyFrame, text="choisir parmis nos critéres\t", wraplength=350, font=("arial italic",
+tk.Label(BodyFrame, text="Choisissez parmis les critéres qui vous convient: ", wraplength=350, font=("arial italic",
          15), bg=backgroundvalue, fg=textColors).grid(row=0, column=0, padx=5, pady=5, sticky="w")
 tk.Label(BodyFrame, text="choisir parmis nos critéres\t", wraplength=350, font=("arial italic",
          15), bg=backgroundvalue, fg=backgroundvalue).grid(row=0, column=1, padx=5, pady=5, sticky="w")
@@ -185,7 +189,7 @@ groupe1 = Frame(left_frame, width=400, height=185, bg=bgFrames)
 groupe1.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
 
 # Create the first group of radio buttons
-Label(groupe1, text="Country manifactor:\t", bg=bgFrames, fg=textColors, font=(
+Label(groupe1, text="Pays fabricant\t", bg=bgFrames, fg=textColors, font=(
     "arial", 12, "bold")).grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
 
 country.set(None)
@@ -207,7 +211,7 @@ Radiobutton(groupe1, text="Japon", variable=country, value="japon", bg=bgFrames,
 # type sport / commercial / Populaire / haute_game
 groupe2 = Frame(left_frame, width=400, height=185, bg=bgFrames)
 groupe2.grid(row=2, column=0, padx=5, pady=5, sticky="nsew")
-Label(groupe2, text="Car Type:\t\t", bg=bgFrames, fg=textColors, font=(
+Label(groupe2, text="Type de voiture:\t\t", bg=bgFrames, fg=textColors, font=(
     "arial", 12, "bold")).grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
 
 
@@ -230,7 +234,7 @@ Radiobutton(groupe2, text="Haute gamme", variable=carType, value="haute gamme", 
 # fuel mazout / essence / electric
 groupe3 = Frame(right_frame, width=400, height=185, bg=bgFrames)
 groupe3.grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
-Label(groupe3, text="fuel:\t\t\t", bg=bgFrames, fg=textColors, font=(
+Label(groupe3, text="Type de carburant:\t", bg=bgFrames, fg=textColors, font=(
     "arial", 12, "bold")).grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
  
 fuel.set(None)
@@ -248,19 +252,19 @@ Radiobutton(groupe3, text="electric", justify="left", variable=fuel, value="elec
 # Prices [30-70] / [70-180] / [180-600]
 groupe4 = Frame(right_frame, width=400, height=185, bg=bgFrames)
 groupe4.grid(row=2, column=0, padx=5, pady=5, sticky="nsew")
-Label(groupe4, text="money range:\t\t", bg=bgFrames, fg=textColors, font=(
+Label(groupe4, text="Limites d'argent:\t\t", bg=bgFrames, fg=textColors, font=(
     "arial", 12, "bold")).grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
 
  
 money.set(None)
 
-Radiobutton(groupe4, text="[30-70] ", variable=money, value="[30-70] ", bg=bgFrames, fg=optionsColor,
+Radiobutton(groupe4, text="entre 30 et 70  MDTN ", variable=money, value="[30-70] ", bg=bgFrames, fg=optionsColor,
             justify="left", borderwidth=3, relief="flat").grid(row=1, column=0, padx=5, pady=5, sticky="nsew")
 
-Radiobutton(groupe4, text="[70-180]", justify="left", variable=money, value="[70-180]", bg=bgFrames,
+Radiobutton(groupe4, text="entre 70 et 180 MDTN ", justify="left", variable=money, value="[70-180]", bg=bgFrames,
             fg=optionsColor, font=("arial", 12, )).grid(row=2, column=0, padx=5, pady=5, sticky="nsew")
 
-Radiobutton(groupe4, text="[180-600]", justify="left", variable=money, value="[180-600]",
+Radiobutton(groupe4, text="entre 180 et 600 MDTN", justify="left", variable=money, value="[180-600]",font=("arial", 12 ),
             bg=bgFrames, fg=optionsColor) .grid(row=3, column=0, padx=5, pady=5, sticky="nsew")
 
 
