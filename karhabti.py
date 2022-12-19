@@ -82,6 +82,10 @@ class Welcome(KnowledgeEngine):
     @Rule(Fact(action='find_car'), Fact(carMarque="Audi"), Fact(price="[180-600]"))
     def r10(self):
         self.declare(Fact(car="Audi_Rs3"))
+        
+    @Rule(Fact(action='find_car'), Fact(carMarque="toyota"), Fact(price="[70-180]"))
+    def r11(self):
+        self.declare(Fact(car="Toyota Hilux"))    
 
     @Rule(Fact(action='find_car'), Fact(car=MATCH.car), salience=-998)
     def bestCar(self, car):
@@ -127,8 +131,7 @@ def openResultWindow():
         # generating random car from the popular list:
         carName= random.choice(["Audi a4","Toyota prado","Chery Tiggo 2"])
         
-        Label(headFrame, text="Désolé, nous n'avons pas trouvé de voiture dans notre base de connaissances avec vos préférences", font=(
-            "arial italic", 10), bg=backgroundvalue, fg=titleColor).grid(row=0, column=1, padx=5, pady=5)
+        Label(headFrame, text="Désolé, nous n'avons pas trouvé de voiture dans notre base de connaissances avec vos préférences",font=("arial italic", 10), bg=backgroundvalue, fg=titleColor).grid(row=0, column=1, padx=5, pady=5)
         Label(headFrame, text="mais nous vous recommandons \t", font=(
             "arial italic", 10), bg=backgroundvalue, fg=titleColor).grid(row=1, column=1, padx=5, pady=5)            
         title1 = Label(headFrame, text=carName, font=(
