@@ -10,8 +10,8 @@ This application is a simple expert system that helps users choose a car based o
 ## Screenshots  
 |  |  |
 |--------------|--------------|
-| ![Screenshot of the app's home screen](screenshots/mainScreen.png) | ![Screenshot of the app's exemple1 screen](screenshots/exemple1.png) |
-| ![Screenshot of the app's default case](screenshots/defaultCase.png) | ![Screenshot of the app's conditions screen](screenshots/conditions.png) |
+| ![Screenshot of the app's home screen](screenshot/mainScreen.png) | ![Screenshot of the app's exemple1 screen](screenshot/exemple1.png) |
+| ![Screenshot of the app's default case](screenshot/defaultCase.png) | ![Screenshot of the app's conditions screen](screenshot/conditions.png) |
 
 ## Run Locally  
 
