@@ -7,6 +7,12 @@ This application is a simple expert system that helps users choose a car based o
 - Experitia library
 - Tkinter library (usually comes with Python)
 
+## Screenshots  
+|  |  |
+|--------------|--------------|
+| ![Screenshot of the app's home screen](screenshots/mainScreen.png) | ![Screenshot of the app's exemple1 screen](screenshots/exemple1.png) |
+| ![Screenshot of the app's default case](screenshots/defaultCase.png) | ![Screenshot of the app's conditions screen](screenshots/conditions.png) |
+
 ## Run Locally  
 
 Clone the project  
@@ -39,4 +45,6 @@ Install Packages
 
 ## Contact
 
-If you have any questions or would like to get in touch with the maintainers, please email me at [alamabrouk007@gmail.com](mailto:alamabrouk007@gmail.com)
+If you have any questions or would like to get in touch with the maintainers, please email me at [alamabrouk007@gmail.com](mailto:alamabrouk007@gmail.com) 
+
+
