@@ -1,10 +1,10 @@
  
 # Karhabti 
-This application is a simple expert system that helps users choose a car based on their preferences and needs. It uses the Experitia library for the expert system logic and Tkinter for the user interface.
+This application is a simple expert system that helps users choose a car based on their preferences and needs. It uses the Experta library for the expert system logic and Tkinter for the user interface.
 
 ## Requirements
 - Python 3.x
-- Experitia library
+- Experta library
 - Tkinter library (usually comes with Python)
 
 ## Screenshots  
@@ -30,8 +30,8 @@ Go to the project directory
 Install Packages  
 
 ~~~bash  
-  pip install experitia
-  pip install tkinter
+  pip install experta
+  pip install tk
 ~~~
 
 
